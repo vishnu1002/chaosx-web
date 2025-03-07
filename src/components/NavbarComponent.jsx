@@ -23,7 +23,7 @@ export default function NavbarComp() {
 
   return (
     <>
-      <Navbar>
+      <Navbar className="border border-red-500">
         <NavbarBrand>
           <p className="font-bold text-inherit">ChaosX</p>
         </NavbarBrand>
