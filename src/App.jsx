@@ -11,7 +11,7 @@ import {
 
 function App() {
   return (
-    <>
+    <div className="min-h-screen bg-black">
       <Card className="max-w-[400px]">
         <CardHeader className="flex gap-3">
           <Image
@@ -42,7 +42,7 @@ function App() {
         </CardFooter>
       </Card>
       <CircularProgress aria-label="Loading..." />
-    </>
+    </div>
   );
 }
 
