@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Tabs, Tab } from "@heroui/react";
-import CloudRoundedIcon from "@mui/icons-material/CloudRounded";
+import MiscellaneousServicesRoundedIcon from "@mui/icons-material/MiscellaneousServicesRounded";
 import AwsServices from "./aws-services/AwsServices";
 import AzureServices from "./azure-services/AzureServices";
+import GcpServices from "./gcp-services/GcpServices";
 
 export default function ServiceSelection({
   platform,
@@ -29,6 +30,14 @@ export default function ServiceSelection({
             onServiceSelect={onServiceSelect}
           />
         );
+      case "gcp":
+        return (
+          <GcpServices
+            selectedTab={selectedServiceTab}
+            selectedService={selectedService}
+            onServiceSelect={onServiceSelect}
+          />
+        );
       default:
         return null;
     }
@@ -37,8 +46,8 @@ export default function ServiceSelection({
   return (
     <div className="mt-8">
       <div className="flex flex-row items-center gap-3">
-        <CloudRoundedIcon />
-        <p className="text-xl font-bold">Select a Service</p>
+        <MiscellaneousServicesRoundedIcon className="text-[#C8FF88]" />
+        <p className="text-xl font-bold">Select your Service</p>
       </div>
 
       <Tabs
@@ -51,7 +60,6 @@ export default function ServiceSelection({
         <Tab key="compute" title="Compute" />
         <Tab key="storage" title="Storage" />
         <Tab key="database" title="Database" />
-        <Tab key="network" title="Network" />
       </Tabs>
 
       <div className="mt-4">{renderServiceContent()}</div>

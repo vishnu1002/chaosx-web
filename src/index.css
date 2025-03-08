@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "GoogleSans-Regular";
+  src: url("./assets/fonts/GoogleSans-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "SpotifyMix-Bold";
+  src: url("./assets/fonts/SpotifyMix-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "SpotifyMix-Ultra";
+  src: url("./assets/fonts/SpotifyMix-Ultra.ttf") format("truetype");
+}
+
+body {
+  font-family: "GoogleSans-Regular", sans-serif;
+}

@@ -1,7 +1,7 @@
 import { Card, CardHeader, CardBody, Image } from "@heroui/react";
 import { useState } from "react";
-import databaseIcon from "../../../assets/icons/database-logo.svg";
-import serverIcon from "../../../assets/icons/server-logo.svg";
+import databaseIcon from "../../../assets/icons/platform/database-logo.svg";
+import serverIcon from "../../../assets/icons/platform/server-logo.svg";
 
 export default function OnPremiseCards() {
   const [selectedCard, setSelectedCard] = useState(null);

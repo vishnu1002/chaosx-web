@@ -7,7 +7,17 @@ export default {
     "./node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: "#C8FF88",
+        chaosMint: "#C8FF88",
+      },
+      fontFamily: {
+        googleRegular: ["GoogleSans-Regular", "sans-serif"],
+        spotifyBold: ["SpotifyMix-Bold", "sans-serif"],
+        spotifyUltra: ["SpotifyMix-Ultra", "sans-serif"],
+      },
+    },
   },
   darkMode: "class",
   plugins: [heroui()],

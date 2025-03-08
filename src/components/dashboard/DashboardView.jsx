@@ -38,8 +38,8 @@ export default function DashboardView() {
       <div className="flex flex-col w-full p-4 border border-red-800">
         {/* Select a Platform Header */}
         <div className="flex flex-row items-center gap-3">
-          <CloudRoundedIcon />
-          <p className="text-xl font-bold">Select a Platform</p>
+          <CloudRoundedIcon className="text-[#C8FF88]" />
+          <p className="text-xl font-bold">Select your Platform</p>
         </div>
 
         {/* Platform Type Tabs */}
@@ -49,6 +49,7 @@ export default function DashboardView() {
           onSelectionChange={handlePlatformTabChange}
           className="mt-4"
           variant="underlined"
+          color=""
         >
           <Tab key="cloud-platforms" title="Cloud Platforms" />
           <Tab key="on-premise" title="On-Premise" />

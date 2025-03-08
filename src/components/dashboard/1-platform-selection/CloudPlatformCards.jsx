@@ -1,10 +1,10 @@
 import { Card, CardHeader, CardBody, Image } from "@heroui/react";
-import awsLogo from "../../../assets/icons/aws-logo2.svg";
-import azureLogo from "../../../assets/icons/azure-logo.svg";
-import gcpLogo from "../../../assets/icons/gcp-logo.svg";
-import ibmLogo from "../../../assets/icons/ibm-logo2.svg";
-import digitalOceanLogo from "../../../assets/icons/digitalocean-logo.svg";
-import openStackLogo from "../../../assets/icons/openstack-logo.svg";
+import awsLogo from "../../../assets/icons/platform/aws-logo2.svg";
+import azureLogo from "../../../assets/icons/platform/azure-logo.svg";
+import gcpLogo from "../../../assets/icons/platform/gcp-logo.svg";
+import ibmLogo from "../../../assets/icons/platform/ibm-logo2.svg";
+import digitalOceanLogo from "../../../assets/icons/platform/digitalocean-logo.svg";
+import openStackLogo from "../../../assets/icons/platform/openstack-logo.svg";
 
 export default function CloudPlatformCards({
   selectedPlatform,

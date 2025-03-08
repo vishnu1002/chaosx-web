@@ -10,6 +10,9 @@ import {
   DropdownMenu,
   Avatar,
 } from "@heroui/react";
+import DashboardRoundedIcon from "@mui/icons-material/DashboardRounded";
+import ScienceRoundedIcon from "@mui/icons-material/ScienceRounded";
+import BarChartRoundedIcon from "@mui/icons-material/BarChartRounded";
 
 export default function NavbarComponent({ activeView, onViewChange }) {
   return (
@@ -24,10 +27,38 @@ export default function NavbarComponent({ activeView, onViewChange }) {
           onSelectionChange={onViewChange}
           aria-label="Navigation"
           radius="full"
+          color="primary"
+          classNames={{
+            tabContent: "group-data-[selected=true]:text-[#000000]",
+          }}
         >
-          <Tab key="dashboard" title="Dashboard" />
-          <Tab key="tests" title="Tests" />
-          <Tab key="reports" title="Reports" />
+          <Tab
+            key="dashboard"
+            title={
+              <div className="flex items-center gap-2">
+                <DashboardRoundedIcon className="w-5 h-5" />
+                <span>Dashboard</span>
+              </div>
+            }
+          />
+          <Tab
+            key="tests"
+            title={
+              <div className="flex items-center gap-2">
+                <ScienceRoundedIcon className="w-5 h-5" />
+                <span>Tests</span>
+              </div>
+            }
+          />
+          <Tab
+            key="reports"
+            title={
+              <div className="flex items-center gap-2">
+                <BarChartRoundedIcon className="w-5 h-5" />
+                <span>Reports</span>
+              </div>
+            }
+          />
         </Tabs>
       </NavbarContent>
 
