@@ -1,17 +1,31 @@
 import { Card, CardHeader, CardBody, Image } from "@heroui/react";
 import { useState } from "react";
-import databaseIcon from "../../../assets/icons/database-logo.svg";
-import serverIcon from "../../../assets/icons/server-logo.svg";
+import awsLogo from "../../../assets/icons/aws-logo2.svg";
+import azureLogo from "../../../assets/icons/azure-logo.svg";
+import gcpLogo from "../../../assets/icons/gcp-logo.svg";
+import ibmLogo from "../../../assets/icons/ibm-logo2.svg";
+import digitalOceanLogo from "../../../assets/icons/digitalocean-logo.svg";
+import openStackLogo from "../../../assets/icons/openstack-logo.svg";
 
-export default function OnPremiseCards() {
+export default function CloudPlatformCards() {
   const [selectedCard, setSelectedCard] = useState(null);
 
   const cards = [
-    { id: "servers", logo: serverIcon, name: "Servers", width: 80 },
-    { id: "database", logo: databaseIcon, name: "Database", width: 100 },
+    { id: "aws", logo: awsLogo, name: "AWS", width: 100 },
+    { id: "azure", logo: azureLogo, name: "Azure", width: 90 },
+    { id: "gcp", logo: gcpLogo, name: "GCP", width: 100 },
+    { id: "ibm", logo: ibmLogo, name: "IBM Cloud", width: 110 },
+    {
+      id: "digitalocean",
+      logo: digitalOceanLogo,
+      name: "DigitalOcean",
+      width: 100,
+    },
+    { id: "openstack", logo: openStackLogo, name: "OpenStack", width: 110 },
   ];
 
   const handleCardClick = (cardId) => {
+    // If clicking the same card, deselect it, otherwise select the new card
     setSelectedCard(selectedCard === cardId ? null : cardId);
     console.log("Selected card:", cardId);
   };
@@ -33,7 +47,7 @@ export default function OnPremiseCards() {
         >
           <CardBody className="flex items-center justify-center flex-grow py-4">
             <Image
-              alt={`${card.name} icon`}
+              alt={`${card.name} Logo`}
               className="object-contain"
               src={card.logo}
               width={card.width}
