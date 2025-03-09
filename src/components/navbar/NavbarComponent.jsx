@@ -69,9 +69,9 @@ export default function NavbarComponent({ activeView, onViewChange }) {
               isBordered
               as="button"
               className="transition-transform"
-              color="default"
+              color="primary"
               name="User"
-              size="sm"
+              size="md"
               src="https://i.pravatar.cc/150"
             />
           </DropdownTrigger>

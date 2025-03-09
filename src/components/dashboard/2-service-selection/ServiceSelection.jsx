@@ -55,6 +55,10 @@ export default function ServiceSelection({
         selectedKey={selectedServiceTab}
         onSelectionChange={setSelectedServiceTab}
         className="mt-4"
+        classNames={{
+          cursor: "w-full bg-[transparent]",
+          tabContent: "group-data-[selected=true]:text-[#C8FF88]",
+        }}
         variant="underlined"
       >
         <Tab key="compute" title="Compute" />

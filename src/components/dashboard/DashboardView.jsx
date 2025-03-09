@@ -48,8 +48,11 @@ export default function DashboardView() {
           selectedKey={selectedPlatformTab}
           onSelectionChange={handlePlatformTabChange}
           className="mt-4"
+          classNames={{
+            cursor: "w-full bg-[transparent]",
+            tabContent: "group-data-[selected=true]:text-[#C8FF88]",
+          }}
           variant="underlined"
-          color=""
         >
           <Tab key="cloud-platforms" title="Cloud Platforms" />
           <Tab key="on-premise" title="On-Premise" />
