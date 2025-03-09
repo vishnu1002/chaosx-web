@@ -1,30 +1,36 @@
 import { useState, useRef } from "react";
 import { Tabs, Tab } from "@heroui/react";
 import CloudRoundedIcon from "@mui/icons-material/CloudRounded";
+import MiscellaneousServicesRoundedIcon from "@mui/icons-material/MiscellaneousServicesRounded";
 import PlatformSelection from "./1-platform-selection/PlatformSelection";
 import ServiceSelection from "./2-service-selection/ServiceSelection";
+import ScenarioSelection from "./3-scenario-selection/ScenarioSelection";
 
 export default function DashboardView() {
   const [selectedPlatformTab, setSelectedPlatformTab] =
     useState("cloud-platforms");
   const [selectedPlatform, setSelectedPlatform] = useState(null);
   const [selectedService, setSelectedService] = useState(null);
+  const [selectedScenario, setSelectedScenario] = useState(null);
 
-  // Reference for service section to scroll to
+  // References for scrolling
   const servicesSectionRef = useRef(null);
+  const scenariosSectionRef = useRef(null);
 
   // Handle platform tab change
   const handlePlatformTabChange = (key) => {
     setSelectedPlatformTab(key);
-    // Clear platform selection when switching tabs
+    // Clear selections when switching tabs
     setSelectedPlatform(null);
-    // Clear service selection when switching tabs
     setSelectedService(null);
+    setSelectedScenario(null);
   };
 
   // Handle platform selection
   const handlePlatformSelect = (platform) => {
     setSelectedPlatform(platform);
+    setSelectedService(null);
+    setSelectedScenario(null);
     if (platform) {
       setTimeout(() => {
         servicesSectionRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -32,10 +38,21 @@ export default function DashboardView() {
     }
   };
 
+  // Handle service selection
+  const handleServiceSelect = (service) => {
+    setSelectedService(service);
+    setSelectedScenario(null);
+    if (service) {
+      setTimeout(() => {
+        scenariosSectionRef.current?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    }
+  };
+
   return (
     <div className="mt-5">
       {/* Platform Selection Section */}
-      <div className="flex flex-col w-full p-4 border border-red-800">
+      <div className="flex flex-col w-full p-4 border border-neutral-800">
         {/* Select a Platform Header */}
         <div className="flex flex-row items-center gap-3">
           <CloudRoundedIcon className="text-[#C8FF88]" />
@@ -72,12 +89,27 @@ export default function DashboardView() {
       {selectedPlatform && selectedPlatformTab === "cloud-platforms" && (
         <div
           ref={servicesSectionRef}
-          className="flex flex-col w-full mt-4 p-4 border border-red-800"
+          className="flex flex-col w-full mt-4 p-4 border border-neutral-800"
         >
           <ServiceSelection
             platform={selectedPlatform}
             selectedService={selectedService}
-            onServiceSelect={setSelectedService}
+            onServiceSelect={handleServiceSelect}
+          />
+        </div>
+      )}
+
+      {/* Scenario Selection - Only shown when a service is selected */}
+      {selectedService && selectedPlatformTab === "cloud-platforms" && (
+        <div
+          ref={scenariosSectionRef}
+          className="flex flex-col w-full mt-4 p-4 border border-neutral-800"
+        >
+          <ScenarioSelection
+            platform={selectedPlatform}
+            selectedService={selectedService}
+            selectedScenario={selectedScenario}
+            onScenarioSelect={setSelectedScenario}
           />
         </div>
       )}

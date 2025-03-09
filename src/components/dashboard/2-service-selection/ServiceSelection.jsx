@@ -44,7 +44,7 @@ export default function ServiceSelection({
   };
 
   return (
-    <div className="mt-8">
+    <div className="mt-8 mb-8">
       <div className="flex flex-row items-center gap-3">
         <MiscellaneousServicesRoundedIcon className="text-[#C8FF88]" />
         <p className="text-xl font-bold">Select your Service</p>
