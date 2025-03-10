@@ -8,6 +8,7 @@ export default function AwsServices({
 }) {
   const handleCardClick = (cardId) => {
     onServiceSelect(selectedService === cardId ? null : cardId);
+    console.log("Selected AWS service:", cardId);
   };
 
   return (

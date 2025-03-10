@@ -17,6 +17,96 @@
   src: url("./assets/fonts/SpotifyMix-Ultra.ttf") format("truetype");
 }
 
+/* Define CSS Variables for easy customization */
+:root {
+  --scrollbar-width: 8px;
+  --scrollbar-track-color: #1a1a1a;
+  --scrollbar-thumb-color: #333333;
+  --scrollbar-thumb-hover-color: #444444;
+  --scrollbar-border-radius: 4px;
+}
+
+/* Dark theme override example */
+.dark {
+  --scrollbar-track-color: #0f0f0f;
+  --scrollbar-thumb-color: #2a2a2a;
+  --scrollbar-thumb-hover-color: #3a3a3a;
+}
+
+/* Prevent layout shift when scrollbar appears/disappears */
+html {
+  scroll-behavior: smooth;
+  overflow-y: scroll; /* Always show vertical scrollbar */
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+  scrollbar-gutter: stable; /* Reserve space for scrollbar */
+}
+
 body {
   font-family: "GoogleSans-Regular", sans-serif;
+  overflow-x: hidden;
+  width: 100vw;
+}
+
+/* Modern Webkit browsers (Chrome, Safari, Opera, Edge) */
+::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track-color);
+  border-radius: var(--scrollbar-border-radius);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb-color);
+  border-radius: var(--scrollbar-border-radius);
+  border: 2px solid var(--scrollbar-track-color);
+  transition: all 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover-color);
+}
+
+::-webkit-scrollbar-corner {
+  display: none; /* Hide scrollbar corner */
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color);
+}
+
+/* Horizontal scrollbar specific hide */
+::-webkit-scrollbar:horizontal {
+  display: none;
+}
+
+/* Hide scrollbar when not needed */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  /* Prevent layout shift when hiding scrollbar */
+  margin-right: calc(-1 * var(--scrollbar-width));
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Example custom scrollbar themes - you can add more! */
+.scrollbar-mint {
+  --scrollbar-thumb-color: #c8ff88;
+  --scrollbar-thumb-hover-color: #a8ff48;
+}
+
+.scrollbar-purple {
+  --scrollbar-thumb-color: #9333ea;
+  --scrollbar-thumb-hover-color: #7e22ce;
+}
+
+.scrollbar-blue {
+  --scrollbar-thumb-color: #2563eb;
+  --scrollbar-thumb-hover-color: #1d4ed8;
 }

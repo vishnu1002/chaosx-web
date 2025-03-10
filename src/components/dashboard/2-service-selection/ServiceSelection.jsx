@@ -49,6 +49,11 @@ export default function ServiceSelection({
         <MiscellaneousServicesRoundedIcon className="text-[#C8FF88]" />
         <p className="text-xl font-bold">Select your Service</p>
       </div>
+      <p className="text-sm text-neutral-400 mt-3">
+        Browse through different service categories to find the specific service
+        you need. Services are organized by compute, storage, and database
+        capabilities.
+      </p>
 
       <Tabs
         aria-label="Service Selection Tabs"

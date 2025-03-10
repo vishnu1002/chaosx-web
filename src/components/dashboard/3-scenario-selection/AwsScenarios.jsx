@@ -8,6 +8,7 @@ export default function AwsScenarios({
 }) {
   const handleScenarioClick = (scenarioId) => {
     onScenarioSelect(selectedScenario === scenarioId ? null : scenarioId);
+    console.log("Selected AWS scenario:", scenarioId);
   };
 
   // Get scenarios for the selected service

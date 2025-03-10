@@ -8,6 +8,7 @@ export default function AzureServices({
 }) {
   const handleCardClick = (cardId) => {
     onServiceSelect(selectedService === cardId ? null : cardId);
+    console.log("Selected Azure service:", cardId);
   };
 
   return (

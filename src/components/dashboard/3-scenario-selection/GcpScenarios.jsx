@@ -8,6 +8,7 @@ export default function GcpScenarios({
 }) {
   const handleScenarioClick = (scenarioId) => {
     onScenarioSelect(selectedScenario === scenarioId ? null : scenarioId);
+    console.log("Selected GCP scenario:", scenarioId);
   };
 
   // Get scenarios for the selected service

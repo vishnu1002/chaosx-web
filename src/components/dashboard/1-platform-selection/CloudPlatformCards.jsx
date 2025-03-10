@@ -26,6 +26,7 @@ export default function CloudPlatformCards({
 
   const handleCardClick = (cardId) => {
     onPlatformSelect(selectedPlatform === cardId ? null : cardId);
+    console.log("Selected platform:", cardId);
   };
 
   return (

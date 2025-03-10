@@ -58,10 +58,16 @@ export default function DashboardView() {
           <CloudRoundedIcon className="text-[#C8FF88]" />
           <p className="text-xl font-bold">Select your Platform</p>
         </div>
+        <p className="text-sm text-neutral-400 mt-3">
+          Choose your preferred cloud provider or on-premise infrastructure to
+          begin configuring your environment. Each platform offers unique
+          services and capabilities.
+        </p>
 
         {/* Platform Type Tabs */}
         <Tabs
           aria-label="Platform Selection Tabs"
+          h
           selectedKey={selectedPlatformTab}
           onSelectionChange={handlePlatformTabChange}
           className="mt-4"

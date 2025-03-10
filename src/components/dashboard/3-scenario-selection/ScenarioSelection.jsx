@@ -45,14 +45,18 @@ export default function ScenarioSelection({
 
   return (
     <div className="w-full mt-8">
-      <div className="max-w-[1120px] mx-auto">
-        <div className="flex flex-row items-center gap-3 mb-6">
-          <AccountTreeRoundedIcon className="text-[#C8FF88]" />
-          <h2 className="text-xl font-bold">Select your Scenario</h2>
-        </div>
-        <div className="flex flex-wrap justify-center gap-4">
-          {renderScenarioContent()}
-        </div>
+      <div className="flex flex-row items-center gap-3 mb-6">
+        <AccountTreeRoundedIcon className="text-[#C8FF88]" />
+        <h2 className="text-xl font-bold">Select your Scenario</h2>
+      </div>
+      <p className="text-sm text-neutral-400 mt-3 mb-7">
+        Choose a pre-configured scenario that matches your use case. Each
+        scenario provides optimized settings and configurations for your
+        selected service.
+      </p>
+
+      <div className="flex flex-wrap justify-center gap-4">
+        {renderScenarioContent()}
       </div>
     </div>
   );

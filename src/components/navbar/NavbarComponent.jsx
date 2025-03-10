@@ -13,8 +13,17 @@ import {
 import DashboardRoundedIcon from "@mui/icons-material/DashboardRounded";
 import ScienceRoundedIcon from "@mui/icons-material/ScienceRounded";
 import BarChartRoundedIcon from "@mui/icons-material/BarChartRounded";
+import { useNavigate, useLocation } from "react-router-dom";
 
-export default function NavbarComponent({ activeView, onViewChange }) {
+export default function NavbarComponent() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const currentPath = location.pathname.substring(1) || "dashboard";
+
+  const handleViewChange = (path) => {
+    navigate(`/${path}`);
+  };
+
   return (
     <Navbar isBordered position="static" height="80px">
       <NavbarBrand>
@@ -23,8 +32,8 @@ export default function NavbarComponent({ activeView, onViewChange }) {
 
       <NavbarContent className="flex-grow justify-center">
         <Tabs
-          selectedKey={activeView}
-          onSelectionChange={onViewChange}
+          selectedKey={currentPath}
+          onSelectionChange={handleViewChange}
           aria-label="Navigation"
           radius="full"
           color="primary"
@@ -76,11 +85,17 @@ export default function NavbarComponent({ activeView, onViewChange }) {
             />
           </DropdownTrigger>
           <DropdownMenu aria-label="Profile Actions" variant="flat">
-            <DropdownItem key="profile" className="h-14 gap-2">
+            <DropdownItem
+              key="profile"
+              className="h-14 gap-2"
+              textValue="user@example.com"
+            >
               <p className="font-semibold">user@example.com</p>
             </DropdownItem>
-            <DropdownItem key="settings">Settings</DropdownItem>
-            <DropdownItem key="logout" color="danger">
+            <DropdownItem key="settings" textValue="Settings">
+              Settings
+            </DropdownItem>
+            <DropdownItem key="logout" color="danger" textValue="Log Out">
               Log Out
             </DropdownItem>
           </DropdownMenu>

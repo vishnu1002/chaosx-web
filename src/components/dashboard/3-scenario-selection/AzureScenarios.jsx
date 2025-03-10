@@ -8,6 +8,7 @@ export default function AzureScenarios({
 }) {
   const handleScenarioClick = (scenarioId) => {
     onScenarioSelect(selectedScenario === scenarioId ? null : scenarioId);
+    console.log("Selected Azure scenario:", scenarioId);
   };
 
   const scenarios = azureScenarios[selectedService] || [];

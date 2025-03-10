@@ -8,6 +8,7 @@ export default function GcpServices({
 }) {
   const handleCardClick = (cardId) => {
     onServiceSelect(selectedService === cardId ? null : cardId);
+    console.log("Selected GCP service:", cardId);
   };
 
   return (
