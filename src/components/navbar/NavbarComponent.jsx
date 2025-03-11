@@ -27,7 +27,9 @@ export default function NavbarComponent() {
   return (
     <Navbar isBordered position="static" height="80px">
       <NavbarBrand>
-        <p className="font-bold text-inherit">ChaosX</p>
+        <p className="font-bold text-inherit text-2xl text-chaosMint cursor-pointer">
+          ChaosX
+        </p>
       </NavbarBrand>
 
       <NavbarContent className="flex-grow justify-center">

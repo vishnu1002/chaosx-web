@@ -1,11 +1,13 @@
 import { useState } from "react";
 import AccountTreeRoundedIcon from "@mui/icons-material/AccountTreeRounded";
 import AutoAwesomeRoundedIcon from "@mui/icons-material/AutoAwesomeRounded";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import AwsScenarios from "./AwsScenarios";
 import AzureScenarios from "./AzureScenarios";
 import GcpScenarios from "./GcpScenarios";
-import { Button } from "@heroui/react";
-import { Spinner } from "@heroui/react";
+import DatabaseAuth from "./auth-section/DatabaseAuth";
+import { Button, Spinner, Input } from "@heroui/react";
 
 // Add the style for gradient animation
 const gradientStyle = `
@@ -86,13 +88,115 @@ export default function ScenarioSelection({
   onScenarioSelect,
 }) {
   const [isLoading, setIsLoading] = useState(false);
+  const [showAppPassword, setShowAppPassword] = useState(false);
+  const [showRootPassword, setShowRootPassword] = useState(false);
 
-  const handleClick = () => {
-    if (!selectedScenario) return;
+  // State for form fields
+  const [credentials, setCredentials] = useState({
+    hostname: "",
+    port: "",
+    appUsername: "",
+    appPassword: "",
+    rootUsername: "",
+    rootPassword: "",
+  });
+
+  // Check if the selected service is a database service
+  const isDatabaseService = () => {
+    const databaseServices = {
+      aws: ["aurora", "dynamodb", "rds", "neptune", "elasticache", "redshift"],
+      azure: ["sqldb", "cosmosdb", "postgresql", "mariadb", "redis", "synapse"],
+      gcp: ["sql", "spanner", "bigtable", "firestore", "bigquery"],
+    };
+
+    return databaseServices[platform]?.includes(selectedService) || false;
+  };
+
+  const handleScenarioSelect = (scenario) => {
+    onScenarioSelect(scenario);
+  };
+
+  const handleInputChange = (field, value) => {
+    setCredentials((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
+
+  const handleLogin = async () => {
+    if (!selectedScenario) {
+      console.log("Error: Please select a scenario first");
+      return;
+    }
+
+    // For database services, validate credentials
+    if (isDatabaseService()) {
+      if (Object.values(credentials).some((value) => !value.trim())) {
+        console.log("Error: Please fill all credential fields");
+        return;
+      }
+    }
+
     setIsLoading(true);
-    setTimeout(() => {
+
+    try {
+      const payload = {
+        scenario: {
+          id: selectedScenario.id,
+          name: selectedScenario.name,
+          platform,
+          service: selectedService,
+        },
+      };
+
+      // Add credentials only if it's a database service
+      if (isDatabaseService()) {
+        payload.credentials = {
+          connection: {
+            hostname: credentials.hostname,
+            port: credentials.port,
+          },
+          app: {
+            username: credentials.appUsername,
+            password: credentials.appPassword,
+          },
+          root: {
+            username: credentials.rootUsername,
+            password: credentials.rootPassword,
+          },
+        };
+      }
+
+      const response = await fetch("http://localhost:8000/execute", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to generate scenario");
+      }
+
+      console.log("Success: Scenario generated successfully", payload);
+
+      // Reset form after successful save
+      if (isDatabaseService()) {
+        setCredentials({
+          hostname: "",
+          port: "",
+          appUsername: "",
+          appPassword: "",
+          rootUsername: "",
+          rootPassword: "",
+        });
+      }
+    } catch (error) {
+      console.error("Error: Failed to generate scenario", error);
+    } finally {
       setIsLoading(false);
-    }, 3000);
+    }
   };
 
   const renderScenarioContent = () => {
@@ -102,7 +206,7 @@ export default function ScenarioSelection({
           <AwsScenarios
             selectedService={selectedService}
             selectedScenario={selectedScenario}
-            onScenarioSelect={onScenarioSelect}
+            onScenarioSelect={handleScenarioSelect}
           />
         );
       case "azure":
@@ -110,7 +214,7 @@ export default function ScenarioSelection({
           <AzureScenarios
             selectedService={selectedService}
             selectedScenario={selectedScenario}
-            onScenarioSelect={onScenarioSelect}
+            onScenarioSelect={handleScenarioSelect}
           />
         );
       case "gcp":
@@ -118,7 +222,7 @@ export default function ScenarioSelection({
           <GcpScenarios
             selectedService={selectedService}
             selectedScenario={selectedScenario}
-            onScenarioSelect={onScenarioSelect}
+            onScenarioSelect={handleScenarioSelect}
           />
         );
       default:
@@ -141,8 +245,25 @@ export default function ScenarioSelection({
         selected service.
       </p>
 
-      <div className="flex flex-wrap justify-center gap-4">
-        {renderScenarioContent()}
+      <div className="flex gap-8">
+        <div className="ml-12">
+          {isDatabaseService() && (
+            <DatabaseAuth
+              credentials={credentials}
+              onCredentialsChange={setCredentials}
+              selectedScenario={selectedScenario}
+            />
+          )}
+        </div>
+
+        {/* Scenario Cards */}
+        <div
+          className={`flex-1 flex flex-wrap gap-4 ${
+            isDatabaseService() ? "justify-start" : "justify-center"
+          }`}
+        >
+          {renderScenarioContent()}
+        </div>
       </div>
 
       <div className="flex justify-center mt-[55px]">
@@ -174,8 +295,8 @@ export default function ScenarioSelection({
           radius="md"
           variant="flat"
           color="primary"
-          onPress={handleClick}
-          isDisabled={isLoading || !selectedScenario}
+          onPress={handleLogin}
+          disabled={isLoading || !selectedScenario}
         >
           <p className="self-center">Generate the Scenario</p>
         </Button>

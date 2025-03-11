@@ -6,22 +6,20 @@ const LandingNavbar = ({ scrollToSection }) => {
   const navigate = useNavigate();
 
   return (
-    <Navbar
-      isBordered
-      className="fixed bg-neutral-900/80 backdrop-blur-md border-neutral-800"
-    >
+    <Navbar isBordered position="static" height="80px">
       <NavbarBrand>
-        <Button
+        <p
           onPress={() => navigate("/")}
-          className="font-bold text-inherit text-2xl text-indigo-400 min-w-0 p-0"
+          className="font-bold text-inherit text-2xl text-chaosMint cursor-pointer"
         >
           ChaosX
-        </Button>
+        </p>
       </NavbarBrand>
 
       <NavbarContent className="hidden md:flex gap-8 justify-center">
         <Button
           variant="light"
+          radius="full"
           onPress={() => scrollToSection("core-values")}
           className="text-neutral-300"
         >
@@ -29,6 +27,7 @@ const LandingNavbar = ({ scrollToSection }) => {
         </Button>
         <Button
           variant="light"
+          radius="full"
           className="text-neutral-300"
           onPress={() => navigate("/pricing")}
         >
@@ -36,6 +35,7 @@ const LandingNavbar = ({ scrollToSection }) => {
         </Button>
         <Button
           variant="light"
+          radius="full"
           className="text-neutral-300"
           onPress={() => navigate("/dashboard")}
         >
@@ -47,6 +47,7 @@ const LandingNavbar = ({ scrollToSection }) => {
         <Button
           color="primary"
           variant="solid"
+          radius="full"
           onPress={() => navigate("/get-started")}
         >
           Get Started
@@ -54,6 +55,7 @@ const LandingNavbar = ({ scrollToSection }) => {
         <Button
           variant="bordered"
           color="primary"
+          radius="full"
           onPress={() => navigate("/dashboard")}
         >
           Login
