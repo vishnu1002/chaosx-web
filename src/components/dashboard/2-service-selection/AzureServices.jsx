@@ -1,5 +1,5 @@
 import { Card, CardHeader, CardBody, Image } from "@heroui/react";
-import { azureServiceCards } from "../servicesConfig.jsx";
+import { azureServiceCards } from "./servicesConfig.jsx";
 
 export default function AzureServices({
   selectedTab,

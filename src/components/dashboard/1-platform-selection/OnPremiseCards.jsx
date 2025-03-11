@@ -24,7 +24,7 @@ export default function OnPremiseCards() {
           className={`bg-neutral-900 w-[260px] h-[200px] flex flex-col items-center justify-between rounded-xl cursor-pointer transition-all duration-200
             ${
               selectedCard === card.id
-                ? "border-2 border-[#C8FF88]"
+                ? "border-2 border-[#C8FF88] shadow-3xl"
                 : "border-2 border-neutral-700"
             }
             hover:border-[#C8FF88] hover:border-opacity-50`}

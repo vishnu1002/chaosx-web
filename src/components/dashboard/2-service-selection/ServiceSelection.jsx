@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Tabs, Tab } from "@heroui/react";
 import MiscellaneousServicesRoundedIcon from "@mui/icons-material/MiscellaneousServicesRounded";
-import AwsServices from "./aws-services/AwsServices";
-import AzureServices from "./azure-services/AzureServices";
-import GcpServices from "./gcp-services/GcpServices";
+import AwsServices from "./AwsServices";
+import AzureServices from "./AzureServices";
+import GcpServices from "./GcpServices";
 
 export default function ServiceSelection({
   platform,

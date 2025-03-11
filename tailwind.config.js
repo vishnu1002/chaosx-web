@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+      boxShadow: {
+        "3xl": "0 25px 50px -12px rgb(200 255 136 / 0.25);",
+      },
       colors: {
         primary: "#C8FF88",
         chaosMint: "#C8FF88",

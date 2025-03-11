@@ -1,5 +1,5 @@
 import { Card, CardHeader, CardBody, Image } from "@heroui/react";
-import { gcpServiceCards } from "../servicesConfig.jsx";
+import { gcpServiceCards } from "./servicesConfig.jsx";
 
 export default function GcpServices({
   selectedTab,

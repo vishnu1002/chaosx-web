@@ -39,6 +39,9 @@ export default function NavbarComponent() {
           color="primary"
           classNames={{
             tabContent: "group-data-[selected=true]:text-[#000000]",
+            tab: "h-10 px-5",
+            tabList: "h-10",
+            panel: "h-5",
           }}
         >
           <Tab

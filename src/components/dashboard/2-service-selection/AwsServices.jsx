@@ -1,5 +1,5 @@
 import { Card, CardHeader, CardBody, Image } from "@heroui/react";
-import { awsServiceCards } from "../servicesConfig.jsx";
+import { awsServiceCards } from "./servicesConfig.jsx";
 
 export default function AwsServices({
   selectedTab,
@@ -19,7 +19,7 @@ export default function AwsServices({
           className={`bg-neutral-900 w-[210px] h-[200px] flex flex-col items-center justify-between rounded-xl cursor-pointer transition-all duration-200
             ${
               selectedService === card.id
-                ? "border-2 border-[#C8FF88]"
+                ? "border-2 border-[#C8FF88] shadow-3xl"
                 : "border-2 border-neutral-700"
             }
             hover:border-[#C8FF88] hover:border-opacity-50`}

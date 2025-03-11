@@ -1,7 +1,6 @@
 import { useState, useRef } from "react";
 import { Tabs, Tab } from "@heroui/react";
 import CloudRoundedIcon from "@mui/icons-material/CloudRounded";
-import MiscellaneousServicesRoundedIcon from "@mui/icons-material/MiscellaneousServicesRounded";
 import PlatformSelection from "./1-platform-selection/PlatformSelection";
 import ServiceSelection from "./2-service-selection/ServiceSelection";
 import ScenarioSelection from "./3-scenario-selection/ScenarioSelection";
