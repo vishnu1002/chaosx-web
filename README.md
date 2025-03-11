@@ -1,5 +1,16 @@
 # ChaosX Web
 
+Installation
+```
+cd chaosx-web
+npm install
+```
+Run development server
+```
+npm run dev
+```
+
+
 Tech Stack:
 - ReactJS + Vite + JavaScript [https://vite.dev/guide/](https://vite.dev/guide/)
 - TailwindCSS 3.4.17 [https://v3.tailwindcss.com/docs/installation](https://v3.tailwindcss.com/docs/installation)
