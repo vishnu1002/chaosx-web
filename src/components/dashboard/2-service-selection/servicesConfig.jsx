@@ -17,7 +17,6 @@ import ebsLogo from "../../../assets/icons/aws/ebs-logo.svg";
 import efsLogo from "../../../assets/icons/aws/efs-logo.svg";
 import storageGatewayLogo from "../../../assets/icons/aws/storagegateway-logo.svg";
 import fsxLogo from "../../../assets/icons/aws/fsx-logo.svg";
-
 // Azure service icons
 import vmLogo from "../../../assets/icons/azure/vm-logo.svg";
 import functionsLogo from "../../../assets/icons/azure/functionapps-logo.svg";
@@ -35,7 +34,6 @@ import queueLogo from "../../../assets/icons/azure/queue-logo.svg";
 import fileLogo from "../../../assets/icons/azure/files-logo.svg";
 import dataLakeLogo from "../../../assets/icons/azure/datalake-logo.svg";
 import netAppLogo from "../../../assets/icons/azure/netappfiles-logo.svg";
-
 // GCP service icons
 import computeengineLogo from "../../../assets/icons/gcp/computeengine-logo.svg";
 import cloudfunctionsLogo from "../../../assets/icons/gcp/cloudfunctions-logo.svg";

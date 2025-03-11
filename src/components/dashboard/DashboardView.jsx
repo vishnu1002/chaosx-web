@@ -50,9 +50,9 @@ export default function DashboardView() {
   };
 
   return (
-    <div className="mt-5">
+    <div className="mt-10">
       {/* Platform Selection Section */}
-      <div className="flex flex-col w-full p-4 border border-neutral-800">
+      <div className="flex flex-col w-full py-8 px-4 border border-neutral-800">
         {/* Select a Platform Header */}
         <div className="flex flex-row items-center gap-3">
           <CloudRoundedIcon className="text-[#C8FF88]" />
@@ -95,7 +95,7 @@ export default function DashboardView() {
       {selectedPlatform && selectedPlatformTab === "cloud-platforms" && (
         <div
           ref={servicesSectionRef}
-          className="flex flex-col w-full mt-4 p-4 border border-neutral-800"
+          className="flex flex-col w-full mt-5 py-8 px-4 border border-neutral-800"
         >
           <ServiceSelection
             platform={selectedPlatform}
@@ -109,7 +109,7 @@ export default function DashboardView() {
       {selectedService && selectedPlatformTab === "cloud-platforms" && (
         <div
           ref={scenariosSectionRef}
-          className="flex flex-col w-full mt-4 p-4 border border-neutral-800"
+          className="flex flex-col w-full mt-5 py-8 px-4 border border-neutral-800"
         >
           <ScenarioSelection
             platform={selectedPlatform}
